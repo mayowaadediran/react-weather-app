@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import NavBar from './Components/NavBar/NavBar';
+import CurrentWeather from './Components/CurrentWeather/CurrentWeather';
+import LocationSelector from './Components/ForecastWeather/ForecastWeather';
+import ForecastWeather from './Components/ForecastWeather/ForecastWeather'
+
 import './App.css';
 
 class App extends Component {
+  
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <NavBar />
+        <LocationSelector />
+        <CurrentWeather />
+        <ForecastWeather />
+        <h1>Weather</h1>
       </div>
     );
   }
