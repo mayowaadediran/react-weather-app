@@ -1,9 +1,16 @@
 import React from 'react';
 
-const LocationSelector = () => {
+const LocationSelector = (props) => {
   return (
-    <form>
-
+    <form onSubmit={props.handleSubmit}>
+      <label>
+        Select Your Location
+      </label>
+      <select value={props.selectedLocation} onChange={props.handleChange}>
+        <option defaultValue> -- Select a location -- </option>
+        {props.locationData.map(location => <option key= {location.id} value={location.id}>{location.name}</option>)}
+      </select>
+      <button disabled={!props.selectedLocation}>Get Weather</button>
     </form>
   );
 }
