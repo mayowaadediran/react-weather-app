@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import NavBar from './Components/NavBar/NavBar';
 import CurrentWeather from './Components/CurrentWeather/CurrentWeather';
 import LocationSelector from './Components/LocationSelector/LocationSelector';
 import ForecastWeather from './Components/ForecastWeather/ForecastWeather';
 import locationData from './locationData'
 
+
 import './App.css';
 
 class App extends Component {
   state = {
     locationData : locationData,
-    selectedLocation: ''
+    selectedLocation: '',
+    currentWeather: '',
   }
 
   handleChange = (e) => {
@@ -21,8 +25,17 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    alert("you selected" + this.state.selectedLocation);
-    console.log(this.state.LocationData)
+    this.getCurrentWeather()
+  }
+
+  getCurrentWeather() {
+    const APIKEY = '320ecea5186519242dbb779eeba2757a';
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?id=${this.state.selectedLocation}&appid=${APIKEY}`)
+      .then(res => {
+        this.setState({
+          currentWeather: res.data
+        })
+      })
   }
 
   render() {
