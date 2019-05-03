@@ -15,6 +15,7 @@ class App extends Component {
     locationData : locationData,
     selectedLocation: '',
     currentWeather: '',
+    isLoading: false,
   }
 
   handleChange = (e) => {
@@ -25,16 +26,25 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.getCurrentWeather()
+    this.getCurrentWeather();
   }
+
+  // componentDidUpdate = (prevState) => {
+  //   if (this.state.currentWeather !== prevState.currentWeather) {
+  //     this.getCurrentWeather()
+  //   }
+  // }
 
   getCurrentWeather() {
     const APIKEY = '320ecea5186519242dbb779eeba2757a';
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?id=${this.state.selectedLocation}&appid=${APIKEY}`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?id=${this.state.selectedLocation}&appid=${APIKEY}&units=metric`)
       .then(res => {
         this.setState({
           currentWeather: res.data
         })
+      }) 
+      .catch(error => {
+        alert("Sorry", error.message)
       })
   }
 
@@ -42,13 +52,27 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <LocationSelector 
+        <div className="Weather">
+          <LocationSelector 
           locationData = {this.state.locationData} 
           selectedLocation = {this.state.selectedLocation}
           handleChange = {this.handleChange}
           handleSubmit = {this.handleSubmit}/>
-        <CurrentWeather />
-        <ForecastWeather />
+          
+        <div className="Weather-results">
+          {!this.state.currentWeather ? 
+          <div>
+            <h1>
+              Your result will be displayed here
+            </h1>
+          </div> : 
+          <CurrentWeather 
+          currentWeather = {this.state.currentWeather}/> }
+
+          <ForecastWeather />
+        </div>
+        </div>
+         
       </div>
     );
   }

@@ -1,5 +1,22 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.Weather {
+  background-color: #11293F;
+  height: 100vh;
+}
+
+.Weather-results {
+  margin: 40px auto;
+  width: 70%;
+}
+
+.Weather-results h1 {
+  text-align: center;
+  color: whitesmoke;
 }
 
 /* .App {

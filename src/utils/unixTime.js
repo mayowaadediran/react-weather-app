@@ -100,3 +100,7 @@ function convertUnixTime(dt) {
   var time = h.substr(-2) + ":" + m.substr(-2);
   return time;
 }
+
+export {
+  convertUnixMonth, convertUnixDate, convertUnixDay, convertUnixYear, convertUnixTime
+}

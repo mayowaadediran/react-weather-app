@@ -1,4 +1,5 @@
 import React from 'react';
+import './LocationSelector.css';
 
 const LocationSelector = (props) => {
   return (

@@ -1,0 +1,45 @@
+form {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+}
+
+form label {
+  color: #ccc;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
+select {
+  position: relative;
+  display: block;
+  border: none;
+  outline: none;
+  background: transparent;
+  appearance: none;
+  width: 50%;
+  border-radius: 0;
+  border-bottom: 2px solid white;
+  color: #ccc;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.5em;
+  padding-left: 10px;
+}
+
+button {
+  outline: none;
+  color: #171c21;
+  background-color: #66E569;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1em;
+}
+
+button:disabled {
+  background-color: rgba(102, 229, 104, 0.363);
+}
+
