@@ -37,9 +37,11 @@ const NavBar = (props) => {
   return (
     <AppBar>
       <Toolbar  className={classes.toolbar}>
-        <Typography variant="h6"  className={classes.logo}>
-          Weather Now Now
-        </Typography>
+        <Link component={RouterLink} to="/">
+          <Typography variant="h6"  className={classes.logo}>
+            Weather Now Now
+          </Typography>
+        </Link>
         <Link component={RouterLink} to="/about">
           <Button>
             About
