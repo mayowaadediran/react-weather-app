@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link as RouterLink } from 'react-router-dom';
 import {
   withStyles
@@ -29,13 +28,16 @@ const styles = {
   },
   logo: {
     color: "#fff"
+  },
+  navBar: {
+    background: "linear-gradient(to right, #2948ff, #396afc)",
   }
 };
 
 const NavBar = (props) => {
   const { classes } = props
   return (
-    <AppBar>
+    <AppBar className={classes.navBar}>
       <Toolbar  className={classes.toolbar}>
         <Link component={RouterLink} to="/">
           <Typography variant="h6"  className={classes.logo}>
