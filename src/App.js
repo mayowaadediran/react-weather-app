@@ -1,58 +1,60 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { Switch, Route } from 'react-router-dom'
+import NavBar from './Components/NavBar';
+import Home from './Pages/Home';
+import About from './Pages/About';
 
-import NavBar from './Components/NavBar/NavBar';
-import CurrentWeather from './Components/CurrentWeather/CurrentWeather';
-import LocationSelector from './Components/LocationSelector/LocationSelector';
-import ForecastWeather from './Components/ForecastWeather/ForecastWeather';
-import locationData from './locationData'
 
 
 import './App.css';
 
 class App extends Component {
-  state = {
-    locationData : locationData,
-    selectedLocation: '',
-    currentWeather: '',
-    isLoading: false,
-  }
-
-  handleChange = (e) => {
-    this.setState({
-      selectedLocation: e.target.value
-    })
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.getCurrentWeather();
-  }
-
-  // componentDidUpdate = (prevState) => {
-  //   if (this.state.currentWeather !== prevState.currentWeather) {
-  //     this.getCurrentWeather()
-  //   }
+  // state = {
+  //   locationData : locationData,
+  //   selectedLocation: '',
+  //   currentWeather: '',
+  //   isLoading: false,
   // }
 
-  getCurrentWeather() {
-    const APIKEY = '320ecea5186519242dbb779eeba2757a';
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?id=${this.state.selectedLocation}&appid=${APIKEY}&units=metric`)
-      .then(res => {
-        this.setState({
-          currentWeather: res.data
-        })
-      }) 
-      .catch(error => {
-        alert("Sorry", error.message)
-      })
-  }
+  // handleChange = (e) => {
+  //   this.setState({
+  //     selectedLocation: e.target.value
+  //   })
+  // };
+
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   this.getCurrentWeather();
+  // }
+
+  // // componentDidUpdate = (prevState) => {
+  // //   if (this.state.currentWeather !== prevState.currentWeather) {
+  // //     this.getCurrentWeather()
+  // //   }
+  // // }
+
+  // getCurrentWeather() {
+  //   const APIKEY = '320ecea5186519242dbb779eeba2757a';
+  //   axios.get(`https://api.openweathermap.org/data/2.5/weather?id=${this.state.selectedLocation}&appid=${APIKEY}&units=metric`)
+  //     .then(res => {
+  //       this.setState({
+  //         currentWeather: res.data
+  //       })
+  //     }) 
+  //     .catch(error => {
+  //       alert("Sorry", error.message)
+  //     })
+  // }
 
   render() {
     return (
       <div className="App">
         <NavBar />
-        <div className="Weather">
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/about" component={About} />
+        </Switch>
+        {/* <div className="Weather">
           <LocationSelector 
           locationData = {this.state.locationData} 
           selectedLocation = {this.state.selectedLocation}
@@ -71,7 +73,7 @@ class App extends Component {
 
           <ForecastWeather />
         </div>
-        </div>
+        </div> */}
          
       </div>
     );
