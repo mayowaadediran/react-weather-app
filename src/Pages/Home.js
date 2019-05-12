@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import SearchBar from '../Components/SearchBar';
-import CurrentWeather from '../Components/CurrentWeather'
-import '../styles/main.css'
+import CurrentWeather from '../Components/CurrentWeather';
+import { withStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import '../styles/main.css';
+
+const styles = theme => ({
+  root: {
+    display: 'block',
+    width: '40%',
+    margin: '0 auto',
+    marginTop: '10px'
+  },
+});
 
  class Home extends Component {
+  
   state = {
     location: '',
     searchLocation: "",
@@ -56,6 +68,9 @@ import '../styles/main.css'
   }
   //Implement location search 
   render() {
+     const {
+       classes
+     } = this.props
     return (
       <div className="home">
         <SearchBar
@@ -64,6 +79,8 @@ import '../styles/main.css'
           isSearching={this.state.isSearching}
           submit={this.handleSubmit}
         />
+
+        { this.state.isLoading ? (<CircularProgress className={classes.root} />) : null }
         {this.state.currentWeatherLoaded ? 
         ( <CurrentWeather 
             currentWeather={this.state.currentWeather} /> ) 
@@ -74,4 +91,4 @@ import '../styles/main.css'
 }
 
 
-export default Home
+export default withStyles(styles)(Home)
