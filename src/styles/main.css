@@ -1,6 +1,6 @@
 .home {
   margin: 0;
   padding-top: 10%;
-  height: 100vh;
-  background: rgb(234, 234, 234)
+  min-height: 100vh;
+  background: url(../images/weather-icons/clouds.jpg) no-repeat fixed center;
 }
