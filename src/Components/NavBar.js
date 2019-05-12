@@ -30,7 +30,7 @@ const styles = {
     color: "#fff"
   },
   navBar: {
-    background: "linear-gradient(to right, #2948ff, #396afc)",
+    background: "linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%)",
   }
 };
 
@@ -45,7 +45,7 @@ const NavBar = (props) => {
           </Typography>
         </Link>
         <Link component={RouterLink} to="/about">
-          <Button>
+          <Button className={classes.logo}>
             About
           </Button>
         </Link>
